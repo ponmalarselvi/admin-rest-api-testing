@@ -15,7 +15,7 @@ import io.restassured.response.Response;
 
 public class ProgramServiceGetApiTest {
 
-	private static final String BASE_URL = "http://localhost:8080";
+	private static final String BASE_URL = "http://localhost:5000";
 
 	@DataProvider
 	public Object[][] getProgramApiData() throws Exception {
@@ -44,7 +44,9 @@ public class ProgramServiceGetApiTest {
 		Reporter.log("Get program details from programs Api for program id" + programId);
 
 		Response response = given().auth().basic("admin", "password").when()
-				.get("/programs/" + programId);
+				.get(BASE_URL + "/programs/" + programId);
+		
+		System.out.println(response.asString());
 
 		// First get the JsonPath object instance from the Response interface
 		JsonPath jsonPathEvaluator = response.jsonPath();

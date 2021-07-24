@@ -15,7 +15,7 @@ import io.restassured.response.Response;
 
 public class ProgramServicePutApiTest {
 
-	private static final String BASE_URL = "http://localhost:8080";
+	private static final String BASE_URL = "http://localhost:5000";
 
 	@DataProvider
 	public Object[][] getUpdateProgramApiData() throws Exception {
@@ -36,7 +36,7 @@ public class ProgramServicePutApiTest {
 		request.put("isOnline", isOnline);
 
 		Response response = given().auth().basic("admin", "password").header("Content-type", "application/json").and().body(request).when()
-				.post("/programs").then().extract().response();
+				.post(BASE_URL + "/programs").then().extract().response();
 		
 		System.out.println("Response Body is: " + response.getBody().asString());
 
@@ -54,7 +54,7 @@ public class ProgramServicePutApiTest {
 
 		response = given().auth().basic("admin", "password").header("Content-type", "application/json")
 				.and().body(request).when()
-				.put("/programs/" + apiProgramId).then().extract().response();
+				.put(BASE_URL + "/programs/" + apiProgramId).then().extract().response();
 		
 		System.out.println("Response Body is: " + response.getBody().asString());
 

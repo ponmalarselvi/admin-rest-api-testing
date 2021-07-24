@@ -15,7 +15,7 @@ import io.restassured.response.Response;
 
 public class ProgramServiceDeleteApiTest {
 
-	private static final String BASE_URL = "http://localhost:8080";
+	private static final String BASE_URL = "http://localhost:5000";
 
 	@DataProvider
 	public Object[][] getDeleteProgramApiData() throws Exception {
@@ -36,7 +36,7 @@ public class ProgramServiceDeleteApiTest {
 		request.put("isOnline", isOnline);
 
 		Response response = given().auth().basic("admin", "password").header("Content-type", "application/json").and().body(request).when()
-				.post("/programs").then().extract().response();
+				.post(BASE_URL + "/programs").then().extract().response();
 		
 		System.out.println("Response Body is: " + response.getBody().asString());
 
@@ -49,7 +49,7 @@ public class ProgramServiceDeleteApiTest {
 
 		response = given().auth().basic("admin", "password")
 				.header("Content-type", "application/json")
-				.when().delete("/programs/" + apiProgramId).then().extract().response();
+				.when().delete(BASE_URL + "/programs/" + apiProgramId).then().extract().response();
 
 		System.out.println("Response Body is: " + response.getBody().asString());
 
