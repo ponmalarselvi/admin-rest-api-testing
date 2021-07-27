@@ -9,13 +9,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.numpyninja.lms.test.util.ExcelUtils;
+import com.numpyninja.lms.test.util.RestApiconfig;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class ProgramServiceDeleteApiTest {
-
-	private static final String BASE_URL = "http://localhost:5000";
 
 	@DataProvider
 	public Object[][] getDeleteProgramApiData() throws Exception {
@@ -36,7 +35,7 @@ public class ProgramServiceDeleteApiTest {
 		request.put("isOnline", isOnline);
 
 		Response response = given().auth().basic("admin", "password").header("Content-type", "application/json").and().body(request).when()
-				.post(BASE_URL + "/programs").then().extract().response();
+				.post(RestApiconfig.BASE_URL  + "/programs").then().extract().response();
 		
 		System.out.println("Response Body is: " + response.getBody().asString());
 
@@ -49,7 +48,7 @@ public class ProgramServiceDeleteApiTest {
 
 		response = given().auth().basic("admin", "password")
 				.header("Content-type", "application/json")
-				.when().delete(BASE_URL + "/programs/" + apiProgramId).then().extract().response();
+				.when().delete(RestApiconfig.BASE_URL  + "/programs/" + apiProgramId).then().extract().response();
 
 		System.out.println("Response Body is: " + response.getBody().asString());
 

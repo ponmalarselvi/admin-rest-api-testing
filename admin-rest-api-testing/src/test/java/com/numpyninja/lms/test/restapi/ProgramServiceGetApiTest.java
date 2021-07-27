@@ -9,13 +9,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.numpyninja.lms.test.util.ExcelUtils;
+import com.numpyninja.lms.test.util.RestApiconfig;
 
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class ProgramServiceGetApiTest {
 
-	private static final String BASE_URL = "http://localhost:5000";
+	
 
 	@DataProvider
 	public Object[][] getProgramApiData() throws Exception {
@@ -28,7 +29,7 @@ public class ProgramServiceGetApiTest {
 
 	@Test
 	public void testGetAllPrograms() {
-		Response response = given().auth().basic("admin", "password").when().get(BASE_URL + "/programs"); // This will
+		Response response = given().auth().basic("admin", "password").when().get(RestApiconfig.BASE_URL + "/programs"); // This will
 		Assert.assertEquals(response.getStatusCode(), 200, "Response received successfully");
 
 		String programId = response.jsonPath().getString("programId[0]");
@@ -44,7 +45,7 @@ public class ProgramServiceGetApiTest {
 		Reporter.log("Get program details from programs Api for program id" + programId);
 
 		Response response = given().auth().basic("admin", "password").when()
-				.get(BASE_URL + "/programs/" + programId);
+				.get(RestApiconfig.BASE_URL  + "/programs/" + programId);
 		
 		System.out.println(response.asString());
 
