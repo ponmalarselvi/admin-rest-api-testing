@@ -10,7 +10,8 @@ Learn how to creat test automation for a REST API using Rest-Assured. It tests t
 * [Eclipse](https://www.guru99.com/install-eclipse-java.html)
 * Clone/download the backend API [lms-admin-rest-service](https://github.com/ponmalarselvi/lms-admin-rest-service)
 
-Running the backend API
+**Running the backend API:**
+
 Please, before executing any tests, run the backend API. After cloning this project:
 
 Navigate to the project folder using the Terminal / Command prompt
