@@ -20,3 +20,7 @@ The API is ready and listen to all requests on http://localhost:8080
 
 **How to execute the tests:**
 You can open each test class on src\test\java and execute all of them
+
+**Libraries:**
+* [Rest-Assured](https://rest-assured.io/) library to test REST APIs
+* [testng](https://testng.org/doc/) Testing framework
